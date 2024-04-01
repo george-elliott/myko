@@ -22,4 +22,4 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 ## Design
 
-This app leverages Material UI for buttons, inputs, modal dialogues, and icons
+This app leverages Material UI for buttons, inputs, modal dialogues, and icons. Tailwind is used for CSS.
