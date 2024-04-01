@@ -11,14 +11,17 @@ export default function Table({log}: Props) {
 		return null;
 	}
 	const rows = log.content.split('\r\n');
-	const columns = rows.shift().split(',');
+	let columns = rows?.shift()?.split(',');
 	// Remove empty row
 	rows.pop();
 
+	if (!columns) {
+		columns = [];
+	}
 	return (
 		<Box sx={{ height: 400, width: '100%', backgroundColor: 'white', position: 'relative'}}>
 			<DataGrid
-				rows={rows.map((row) => columns.reduce((memo, value, i) => {
+				rows={rows.map((row) => columns.reduce((memo:Record<string, string>, value, i) => {
 					memo[value] = row.split(',')[i];
 					return memo;
 				}, {}))}

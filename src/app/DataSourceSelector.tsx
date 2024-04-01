@@ -1,10 +1,11 @@
+import {ReactNode} from 'react';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 interface Props {
-	handleChangeSource: (x: string) => void;
+	handleChangeSource?: (event: SelectChangeEvent<number>, child: ReactNode) => void;
 	source: number;
 	disabled: boolean;
 }
@@ -16,7 +17,7 @@ export default function DataSourceSelector(props: Props) {
 			<Select
 				value={props.source}
 				label="Data Source"
-				onChange={props.handleChangeSource}
+				onChange={props.handleChangeSource!}
 				disabled={props.disabled}
 			>
 				<MenuItem value={1}>Text</MenuItem>

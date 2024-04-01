@@ -10,14 +10,14 @@ interface Props {
 
 export default function App(props: Props) {
 	const [chats, setChats] = useState<Chat[]>([{name: 'Test', logs: [], source: 1}]);
-	const [selectedChatIndex, selectChat] = useState<number | undefined>(undefined);
+	const [selectedChatIndex, selectChat] = useState<number>(-1);
 	const selectedChat = chats[selectedChatIndex];
 
-	const handleCreate = (chat) => {
+	const handleCreate = (chat: Chat) => {
 		setChats([...chats, chat]);
 	}
 
-	const handleQuery = (query) => {
+	const handleQuery = (query: string) => {
 		const chat = {
 			...selectedChat,
 			logs: [

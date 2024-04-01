@@ -19,7 +19,7 @@ const Transition = React.forwardRef(function Transition(
 
 interface Props {
 	title: string;
-	children: React.PropsWithChildren;
+	children: any;
 	buttons: boolean;
 	isOpen: boolean;
 	handleClose?: () => void;

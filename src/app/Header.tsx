@@ -1,5 +1,5 @@
 'use client';
-import {chat} from './types';
+import {Chat} from './types';
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -14,7 +14,7 @@ import CustomTermForm from './CustomTerm';
 interface HeaderProps {
 	chats: Chat[];
 	handleCreate: (x: Chat) => void;
-	handleSelect: (x: Chat) => void;
+	handleSelect: (x: number) => void;
 	selectedChat: number;
 }
 
@@ -30,11 +30,11 @@ export default function Header(props: HeaderProps) {
 		setIsOpen(false);
 	}
 
-	const handleChangeSource = (e) => {
+	const handleChangeSource = (e: any) => {
 		setSource(e.target.value);
 	}
 
-	const handleChangeName = (e) => {
+	const handleChangeName = (e: any) => {
 		setName(e.target.value);
 	}
 
@@ -57,7 +57,7 @@ export default function Header(props: HeaderProps) {
 				>
 					<div className="flex flex-col w-[250px] h-[150px] justify-between">
 						<TextField label="Name" onChange={handleChangeName} value={name}/>
-						<DataSourceSelector source={source} handleChangeSource={handleChangeSource}/>
+						<DataSourceSelector source={source} handleChangeSource={handleChangeSource} disabled={false}/>
 					</div>
 				</Dialog>
 
@@ -67,7 +67,7 @@ export default function Header(props: HeaderProps) {
 						<Select
 							value={props.selectedChat}
 							label="Chat"
-							onChange={(e) => props.handleSelect(e.target.value)}
+							onChange={(e) => props.handleSelect(e.target.value as number)}
 						>
 							{props.chats.map((chat, i) => (
 								<MenuItem key={i} value={i}>{chat.name}</MenuItem>

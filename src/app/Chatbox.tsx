@@ -13,14 +13,14 @@ interface ChatboxProps {
 
 export default function Chatbox(props: ChatboxProps) {
 	const {logs, handleQuery, source} = props;
-	const ref = useRef(null);
+	const ref = useRef<HTMLDivElement>(null);
 	if (!logs) {
 		return (
 			<div className="flex items-center h-full p-24">Select or create a new chat</div>
 		);
 	}
 
-	const handleScroll = (query) => {
+	const handleScroll = (query: string) => {
 		handleQuery(query);
 		//Scroll to bottom of chat window when overflowing
 		setTimeout(() => ref.current?.scrollTo(0, ref.current?.scrollHeight), 10)
@@ -29,11 +29,11 @@ export default function Chatbox(props: ChatboxProps) {
 		<div className="flex-[0_1_100%] flex flex-col justify-end align-center p-16 bg-slate-800 relative">
 			<div ref={ref} className="flex flex-col align-center mb-2 overflow-auto max-h-[500px]">
 				{logs.map((log, i) => {
-					const Component = Content[log.type];
+					const Component = log.type === 'text' ? LogText : Table;
 					return (
-						<span>
+						<span key={i}>
 							{ log.response && <Explanation />}
-							<Component key={i} log={log} />
+							<Component log={log} />
 						</span>
 					);
 				})}
@@ -52,13 +52,8 @@ interface LogProps {
 	log: Log;
 }
 
-function Log({log}: LogProps) {
+function LogText({log}: LogProps) {
 	return (
 		<span>{!log.response && '> '}{log.content}</span>
 	);
 }
-
-const Content = {
-	text: Log,
-	csv: Table,
-};

@@ -9,11 +9,11 @@ export default function Input({handleQuery}: InputProps) {
 
 	const [query, setQuery] = useState('');
 
-	const onChange = (e) => {
+	const onChange = (e: any) => {
 		setQuery(e.target.value)
 	}
 
-	const onKeyPress = (e) => {
+	const onKeyPress = (e: any) => {
 		if (e.key === 'Enter' && query) {
 			handleQuery(query)
 			setQuery('');

@@ -5,7 +5,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Dialog from './Dialogue';
 
-export default function CustomTermForm(props) {
+export default function CustomTermForm() {
 	const [term, setTerm] = useState('');
 	const [description, setDescription] = useState('');
 	const [isOpen, setIsOpen] = useState(false);

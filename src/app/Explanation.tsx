@@ -20,6 +20,7 @@ export default function Explanation() {
 				isOpen={isOpen}
 				handleClose={handleClose}
 				title="How did I generate this response?"
+				buttons={false}
 			>
 				<p>
 					This is a brief explanation of how the LLM generated this specific response.

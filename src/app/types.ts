@@ -1,5 +1,5 @@
 export type Log = {
-	type: 'text' | 'csv';
+	type: string;
 	content: string;
 	response: boolean;
 }
