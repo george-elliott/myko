@@ -25,7 +25,7 @@ export default function Table({log}: Props) {
 					memo[value] = row.split(',')[i];
 					return memo;
 				}, {}))}
-				columns={columns.map(name => ({field: name, headerName: name, width: 70}))}
+				columns={columns.map(name => ({field: name, headerName: name, width: 140}))}
 				getRowId={(row) => row['Customer Id']}
 			/>
 		</Box>
